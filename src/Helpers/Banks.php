@@ -2,6 +2,7 @@
 
 namespace KingFlamez\Rave\Helpers;
 
+use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Http;
 
@@ -32,6 +33,7 @@ class Banks
     /**
      * Get Nigerian Banks
      * @return object
+     * @throws ConnectionException
      */
     public function nigeria()
     {
@@ -52,6 +54,7 @@ class Banks
     /**
      * Get Ghanaian Banks
      * @return object
+     * @throws ConnectionException
      */
     public function ghana()
     {
@@ -72,6 +75,7 @@ class Banks
     /**
      * Get Kenyan Banks
      * @return object
+     * @throws ConnectionException
      */
     public function kenya()
     {
@@ -92,6 +96,7 @@ class Banks
     /**
      * Get Ugandan Banks
      * @return object
+     * @throws ConnectionException
      */
     public function uganda()
     {
@@ -112,6 +117,7 @@ class Banks
     /**
      * Get South African Banks
      * @return object
+     * @throws ConnectionException
      */
     public function southAfrica()
     {
@@ -132,6 +138,7 @@ class Banks
     /**
      * Get Tanzanian Banks
      * @return object
+     * @throws ConnectionException
      */
     public function tanzania()
     {
@@ -153,6 +160,7 @@ class Banks
      * Get Tanzanian Banks
      * @param bankId
      * @return object
+     * @throws ConnectionException
      */
     public function branches($bankId)
     {

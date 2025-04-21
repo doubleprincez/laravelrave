@@ -2,6 +2,7 @@
 
 namespace KingFlamez\Rave;
 
+use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Http;
 use KingFlamez\Rave\Helpers\Banks;
@@ -37,7 +38,7 @@ class Rave
 
     /**
      * Generates a unique reference
-     * @param $transactionPrefix
+     * @param String|null $transactionPrefix
      * @return string
      */
 
@@ -53,6 +54,7 @@ class Rave
      * Reaches out to Flutterwave to initialize a payment
      * @param $data
      * @return object
+     * @throws ConnectionException
      */
     public function initializePayment(array $data)
     {
@@ -85,6 +87,7 @@ class Rave
      * Reaches out to Flutterwave to verify a transaction
      * @param $id
      * @return object
+     * @throws ConnectionException
      */
     public function verifyTransaction($id)
     {
@@ -118,8 +121,7 @@ class Rave
      */
     public function payments()
     {
-        $payments = new Payments($this->publicKey, $this->secretKey, $this->baseUrl);
-        return $payments;
+        return new Payments($this->publicKey, $this->secretKey, $this->baseUrl);
     }
 
     /**
@@ -128,8 +130,7 @@ class Rave
      */
     public function banks()
     {
-        $banks = new Banks($this->publicKey, $this->secretKey, $this->baseUrl);
-        return $banks;
+        return new Banks($this->publicKey, $this->secretKey, $this->baseUrl);
     }
 
     /**
@@ -148,8 +149,7 @@ class Rave
      */
     public function beneficiaries()
     {
-        $beneficiary = new Beneficiary($this->publicKey, $this->secretKey, $this->baseUrl);
-        return $beneficiary;
+        return new Beneficiary($this->publicKey, $this->secretKey, $this->baseUrl);
     }
 
     /**
@@ -158,7 +158,6 @@ class Rave
      */
     public function bill()
     {
-        $bills = new Bills($this->publicKey, $this->secretKey, $this->baseUrl);
-        return $bills;
+        return new Bills($this->publicKey, $this->secretKey, $this->baseUrl);
     }
 }

@@ -6,7 +6,7 @@ use Illuminate\Support\ServiceProvider;
 
 class RaveServiceProvider extends ServiceProvider
 {
-    protected $defer = false;
+    protected bool $defer = false;
 
     /**
      * Perform post-registration booting of services.
